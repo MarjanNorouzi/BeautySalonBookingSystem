@@ -6,8 +6,8 @@ namespace BeautySalon.Models
     {
         [Key]
         public TKey Id { get; set; }
-        public DateTimeOffset CreationDate { get; set; }
-        public DateTimeOffset ModificationDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
     }
 
@@ -24,41 +24,58 @@ namespace BeautySalon.Models
         [Required]
         [Length(10, 10)]
         public string PhoneNumber { get; set; }
-        //public string PhoneNumberConfirmed { get; set;}
-        //public string EmailConfirmed { get; set;}
     }
-
+    
     public record Customer : Human
     {
-        public string? Email { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Email { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 
     public record Operator : Human
     {
-
+        public string Expertise { get; set; }
+        public ICollection<SubserviceOperator> SubserviceOperators { get; set; }
     }
 
     public record MainService : BaseEntity<int>
     {
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
-        public string Family { get; set; }
+        public string Description { get; set; }
+        public ICollection<Subservice> Subservices { get; set; }
     }
 
-    public record SubService : BaseEntity<int>
+    public record Subservice : BaseEntity<int>
     {
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; } // Price in toman (avoid floating-point issues)
+        public int EstimatedDuration { get; set; } // Duration in minutes
         public int MainServiceId { get; set; }
-        public string Name { get; set; }
+        public MainService MainService { get; set; }
+        public ICollection<SubserviceOperator> SubserviceOperators { get; set; }
     }
 
-    public record ServiceOperator : BaseEntity<int>
+    public record SubserviceOperator
     {
+        public int SubserviceId { get; set; }
+        public Subservice Subservice { get; set; }
         public int OperatorId { get; set; }
-        public int SubServiceId { get; set; }
+        public Operator Operator { get; set; }
     }
 
-    public record Appoinnment : BaseEntity<int>
+    public record Appointment
     {
         public int CustomerId { get; set; }
-        public int ServiceOperatorId { get; set; }
+        public Customer Customer { get; set; }
+        public int SubserviceOperatorId { get; set; }
+        public SubserviceOperator SubserviceOperator { get; set; }
+        public DateTime ReservationDateTime { get; set; } // Added property for reservation date and time
     }
 }
