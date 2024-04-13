@@ -7,4 +7,27 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
+
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+
+	</ItemGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\BeautySalon.InfraStructure\BeautySalon.InfraStructure.csproj" />
+    <ProjectReference Include="..\BeautySalon.Models\BeautySalon.Models.csproj" />
+  </ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+	
+	
 </Project>
