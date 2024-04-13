@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
-
+var a = builder.Configuration.GetConnectionString("BeautySalon");
 builder.Services.AddDbContext<BeautySalonContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("BeautySalon")));
 builder.Services
     .AddIdentityCore<ApplicationUser>()
