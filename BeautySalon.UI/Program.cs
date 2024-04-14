@@ -1,9 +1,14 @@
 ﻿using BeautySalon.InfraStructure.Contexts;
-using BeautySalon.Models.IdentityModels;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<BeautySalonContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("BeautySalon")), ServiceLifetime.Scoped);
+//builder.Services
+//    .AddIdentityCore<ApplicationUser>()
+//    .AddRoles<ApplicationRole>()
+//    .AddEntityFrameworkStores<BeautySalonContext>()
+//    .AddDefaultTokenProviders();
 
 builder.Services.AddCors(options =>
 {
@@ -19,13 +24,6 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
-var a = builder.Configuration.GetConnectionString("BeautySalon");
-builder.Services.AddDbContext<BeautySalonContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("BeautySalon")));
-builder.Services
-    .AddIdentityCore<ApplicationUser>()
-    .AddRoles<ApplicationRole>()
-    .AddEntityFrameworkStores<BeautySalonContext>()
-    .AddDefaultTokenProviders();
 
 //builder.Services.AddDbContext<BeautySalonContext>();
 //builder.Services.AddScoped<BeautySalonContext>(sp => sp.GetRequiredService<BeautySalonContext>());

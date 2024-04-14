@@ -23,8 +23,10 @@ namespace BeautySalon.Models
             Appointments = [];
         }
 
-        [ForeignKey("Id")]
-        public required ApplicationUser ApplicationUser { get; set; }
+        //public int ApplicationUserId { get; set; }
+
+        //[ForeignKey(nameof(ApplicationUser.Id))]
+        //public required ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
     }
@@ -40,8 +42,9 @@ namespace BeautySalon.Models
         // که با کلید داشتن به جدول ساب سرویس مشخص میشه و نیازی به این پراپرتی نیست
         //public string Expertise { get; set; }
 
-        [ForeignKey("Id")]
-        public ApplicationUser ApplicationUser { get; set; }
+        //public string ApplicationUserId { get; set; }
+        //[ForeignKey(nameof(ApplicationUser.Id))]
+        //public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<SubserviceOperator> SubserviceOperators { get; set; }
     }

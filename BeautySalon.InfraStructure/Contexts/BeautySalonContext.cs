@@ -2,14 +2,13 @@
 using BeautySalon.InfraStructure.Mapping;
 using BeautySalon.Models;
 using BeautySalon.Models.IdentityModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BeautySalon.InfraStructure.Contexts
 {
-    public class BeautySalonContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, IdentityUserClaim<string>,
-        ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+    public class BeautySalonContext : DbContext
+    //IdentityDbContext<ApplicationUser, ApplicationRole, string, IdentityUserClaim<string>,
+    //ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public BeautySalonContext(DbContextOptions<BeautySalonContext> options) : base(options)
         {
@@ -38,23 +37,23 @@ namespace BeautySalon.InfraStructure.Contexts
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ApplicationUser>().HasKey(x => x.Id);
-            modelBuilder.Entity<ApplicationUser>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.User).HasForeignKey(x => x.UserId);
-            modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Customer);
-            modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Operator);
+            //modelBuilder.Entity<ApplicationUser>().HasKey(x => x.Id);
+            //modelBuilder.Entity<ApplicationUser>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.User).HasForeignKey(x => x.UserId);
+            //modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Customer);
+            //modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Operator);
 
-            modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRoles");
-            modelBuilder.Entity<ApplicationRole>().HasKey(x => x.Id);
-            modelBuilder.Entity<ApplicationRole>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.Role).HasForeignKey(x => x.RoleId);
+            //modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRoles");
+            //modelBuilder.Entity<ApplicationRole>().HasKey(x => x.Id);
+            //modelBuilder.Entity<ApplicationRole>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.Role).HasForeignKey(x => x.RoleId);
 
-            modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.User);
-            modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.Role);
+            //modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.User);
+            //modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.Role);
 
-            modelBuilder.Ignore<IdentityUserClaim<string>>();
-            modelBuilder.Ignore<IdentityRoleClaim<string>>();
-            modelBuilder.Ignore<IdentityUserToken<string>>();
+            //modelBuilder.Ignore<IdentityUserClaim<string>>();
+            //modelBuilder.Ignore<IdentityRoleClaim<string>>();
+            //modelBuilder.Ignore<IdentityUserToken<string>>();
 
-            GenerateRoleData(modelBuilder);
+            //GenerateRoleData(modelBuilder);
         }
 
         private static void GenerateRoleData(ModelBuilder modelBuilder)
