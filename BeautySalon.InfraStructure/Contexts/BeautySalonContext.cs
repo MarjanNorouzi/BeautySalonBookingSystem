@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BeautySalon.InfraStructure.Contexts
 {
-    public class BeautySalonContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, IdentityUserClaim<string>,
-        ApplicationUserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+    public class BeautySalonContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>,
+        ApplicationUserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
         public BeautySalonContext(DbContextOptions<BeautySalonContext> options) : base(options)
         {
@@ -63,7 +63,7 @@ namespace BeautySalon.InfraStructure.Contexts
                 new ApplicationRole
                 {
                     //Id = RoleSeedData.UserId,
-                    Id = Guid.NewGuid().ToString(),
+                    Id = Guid.NewGuid(),
                     Name = RoleSeedData.UserName,
                     NormalizedName = RoleSeedData.UserNormalizedName,
                     //ConcurrencyStamp = RoleSeedData.UserConcurrencyStamp
@@ -71,14 +71,14 @@ namespace BeautySalon.InfraStructure.Contexts
                  new ApplicationRole
                  {
                      //Id = RoleSeedData.TeacherId,
-                     Id = Guid.NewGuid().ToString(),
+                     Id = Guid.NewGuid(),
                      Name = RoleSeedData.OperatorName,
                      NormalizedName = RoleSeedData.OperatorNormalizedName,
                      //ConcurrencyStamp = RoleSeedData.TeacherConcurrencyStamp
                  },
                 new ApplicationRole
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = Guid.NewGuid(),
                     //Id = RoleSeedData.AdminId,
                     Name = RoleSeedData.AdminName,
                     NormalizedName = RoleSeedData.AdminNormalizedName,

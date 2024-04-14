@@ -22,10 +22,8 @@ builder.Services.AddHttpClient();
 var a = builder.Configuration.GetConnectionString("BeautySalon");
 builder.Services.AddDbContext<BeautySalonContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("BeautySalon")));
 builder.Services
-    .AddIdentityCore<ApplicationUser>()
-    .AddRoles<ApplicationRole>()
-    .AddEntityFrameworkStores<BeautySalonContext>()
-    .AddDefaultTokenProviders();
+    .AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddEntityFrameworkStores<BeautySalonContext>();
 
 //builder.Services.AddDbContext<BeautySalonContext>();
 //builder.Services.AddScoped<BeautySalonContext>(sp => sp.GetRequiredService<BeautySalonContext>());
