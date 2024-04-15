@@ -2,7 +2,7 @@
 
 namespace BeautySalon.Models.IdentityModels
 {
-    public class ApplicationRole : IdentityRole
+    public class ApplicationRole : IdentityRole<Guid>
     {
         public ApplicationRole()
         {

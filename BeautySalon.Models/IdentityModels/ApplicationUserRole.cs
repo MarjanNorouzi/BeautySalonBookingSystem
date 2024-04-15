@@ -2,11 +2,11 @@
 
 namespace BeautySalon.Models.IdentityModels
 {
-    public class ApplicationUserRole : IdentityUserRole<string>
+    public class ApplicationUserRole : IdentityUserRole<Guid>
     {
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         public ApplicationUser User { get; set; }
-        public string RoleId { get; set; }
+        public Guid RoleId { get; set; }
         public ApplicationRole Role { get; set; }
     }
 }

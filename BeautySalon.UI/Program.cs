@@ -1,4 +1,5 @@
 ﻿using BeautySalon.InfraStructure.Contexts;
+using BeautySalon.Models.IdentityModels;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
+var a = builder.Configuration.GetConnectionString("BeautySalon");
+builder.Services.AddDbContext<BeautySalonContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("BeautySalon")));
+builder.Services
+    .AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddEntityFrameworkStores<BeautySalonContext>();
 
 //builder.Services.AddDbContext<BeautySalonContext>();
 //builder.Services.AddScoped<BeautySalonContext>(sp => sp.GetRequiredService<BeautySalonContext>());

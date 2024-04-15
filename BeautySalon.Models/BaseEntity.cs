@@ -1,6 +1,5 @@
 ﻿using BeautySalon.Models.IdentityModels;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeautySalon.Models
 {
@@ -23,10 +22,9 @@ namespace BeautySalon.Models
             Appointments = [];
         }
 
-        //public int ApplicationUserId { get; set; }
+        public Guid UserId { get; set; }
 
-        //[ForeignKey(nameof(ApplicationUser.Id))]
-        //public required ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
     }
@@ -42,9 +40,9 @@ namespace BeautySalon.Models
         // که با کلید داشتن به جدول ساب سرویس مشخص میشه و نیازی به این پراپرتی نیست
         //public string Expertise { get; set; }
 
-        //public string ApplicationUserId { get; set; }
-        //[ForeignKey(nameof(ApplicationUser.Id))]
-        //public ApplicationUser ApplicationUser { get; set; }
+        public Guid UserId { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<SubserviceOperator> SubserviceOperators { get; set; }
     }
