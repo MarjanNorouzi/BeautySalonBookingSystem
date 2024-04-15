@@ -1,7 +1,6 @@
-﻿using SampleAccounting.Domain.Primitives;
+﻿using BeautySalon.InfraStructure.Primitives.PrimitiveResults;
 
-namespace BeautySalon.InfraStructure.Primitives;
-
+namespace BeautySalon.Models.Primitives.PrimitiveResults;
 
 public static partial class PrimitiveResultExtensions
 {

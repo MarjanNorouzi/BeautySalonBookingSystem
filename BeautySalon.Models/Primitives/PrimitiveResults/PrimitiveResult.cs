@@ -1,6 +1,6 @@
-﻿using BeautySalon.InfraStructure.Primitives;
+﻿using BeautySalon.Models.Primitives.PrimitiveResults;
 
-namespace SampleAccounting.Domain.Primitives;
+namespace BeautySalon.InfraStructure.Primitives.PrimitiveResults;
 
 public readonly partial record struct PrimitiveResult
 {

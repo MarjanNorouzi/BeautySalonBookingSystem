@@ -1,6 +1,7 @@
-﻿using BeautySalon.InfraStructure.Primitives;
+﻿using BeautySalon.Models.Primitives.PrimitiveResults;
 
-namespace SampleAccounting.Domain.Primitives;
+namespace BeautySalon.InfraStructure.Primitives.PrimitiveResults;
+
 public readonly partial record struct PrimitiveResult
 {
     #region " Ensure "
@@ -31,7 +32,7 @@ public readonly partial record struct PrimitiveResult
 
     public static ValueTask<PrimitiveResult<TValue>> Ensure<TValue>(PrimitiveResult<TValue> src, (Func<TValue, bool> predicate, PrimitiveError error)[] functions) =>
         Combine(functions.Select(f => Ensure(src, f.predicate, f.error)).ToArray());
-
+    
     public static ValueTask<PrimitiveResult<TValue>> Ensure<TValue>(PrimitiveResult<TValue> src, (Func<TValue, ValueTask<bool>> predicate, PrimitiveError error)[] functions) =>
         Combine(functions.Select(f => Ensure(src, f.predicate, f.error)).ToArray());
 
@@ -64,7 +65,7 @@ public readonly partial record struct PrimitiveResult
         }
         return await Combine(list.ToArray()).ConfigureAwait(false);
     }
-
+        
 
     public static ValueTask<PrimitiveResult<IEnumerable<TValue>>> CombineAll<TValue>(params PrimitiveResult<TValue>[] results)
     {
@@ -320,7 +321,7 @@ public readonly partial record struct PrimitiveResult
                ? ValueTask.FromResult(PrimitiveResult.Failure(src))
                : func(src);
 
-    /// <summary>
+      /// <summary>
     /// Binds to the result of the function and returns it.
     /// </summary>
     /// <param name="src">The result.</param>
@@ -369,7 +370,7 @@ public readonly partial record struct PrimitiveResult
     public static async ValueTask<PrimitiveResult<TValue>> Bind<TValue>(PrimitiveResult<TValue> src, Func<TValue, Task<PrimitiveResult<TValue>>> func) =>
             src.IsFailure
                 ? PrimitiveResult.Failure(src)
-                : await func(src.Value).ConfigureAwait(false);
+                :  await func(src.Value).ConfigureAwait(false);
 
     /// <summary>
     /// Binds to the result of the function and returns it.

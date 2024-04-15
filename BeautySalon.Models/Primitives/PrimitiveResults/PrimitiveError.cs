@@ -1,4 +1,4 @@
-﻿namespace BeautySalon.InfraStructure.Primitives;
+﻿namespace BeautySalon.Models.Primitives.PrimitiveResults;
 
 public readonly record struct PrimitiveError
 {
