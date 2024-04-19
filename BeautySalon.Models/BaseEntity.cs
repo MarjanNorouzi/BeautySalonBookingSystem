@@ -24,7 +24,7 @@ namespace BeautySalon.Models
 
         public Guid UserId { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public required ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
     }
@@ -42,9 +42,9 @@ namespace BeautySalon.Models
 
         public Guid UserId { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public required ApplicationUser ApplicationUser { get; set; }
 
-        public ICollection<SubserviceOperator> SubserviceOperators { get; set; }
+        public required ICollection<SubserviceOperator> SubserviceOperators { get; set; }
     }
 
     public record MainService : BaseEntity<int>
@@ -104,6 +104,6 @@ namespace BeautySalon.Models
         public int CustomerId { get; set; }
         public required Customer Customer { get; set; }
 
-        public ICollection<SubserviceOperator> SubserviceOperators { get; set; }
+        public required ICollection<SubserviceOperator> SubserviceOperators { get; set; }
     }
 }

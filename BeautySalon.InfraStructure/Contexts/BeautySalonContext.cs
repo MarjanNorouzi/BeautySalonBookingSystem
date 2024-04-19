@@ -38,23 +38,23 @@ namespace BeautySalon.InfraStructure.Contexts
 
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<ApplicationUser>().HasKey(x => x.Id);
-            //modelBuilder.Entity<ApplicationUser>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.User).HasForeignKey(x => x.UserId);
-            //modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Customer);
-            //modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Operator);
+            modelBuilder.Entity<ApplicationUser>().HasKey(x => x.Id);
+            modelBuilder.Entity<ApplicationUser>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.User).HasForeignKey(x => x.UserId);
+            modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Customer);
+            modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Operator);
 
-            //modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRoles");
-            //modelBuilder.Entity<ApplicationRole>().HasKey(x => x.Id);
-            //modelBuilder.Entity<ApplicationRole>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.Role).HasForeignKey(x => x.RoleId);
+            modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRoles");
+            modelBuilder.Entity<ApplicationRole>().HasKey(x => x.Id);
+            modelBuilder.Entity<ApplicationRole>().HasMany(x => x.ApplicationUserRoles).WithOne(x => x.Role).HasForeignKey(x => x.RoleId);
 
-            //modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.User);
-            //modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.Role);
+            modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.User);
+            modelBuilder.Entity<ApplicationUserRole>().HasOne(x => x.Role);
 
-            //modelBuilder.Ignore<IdentityUserClaim<string>>();
-            //modelBuilder.Ignore<IdentityRoleClaim<string>>();
-            //modelBuilder.Ignore<IdentityUserToken<string>>();
+            modelBuilder.Ignore<IdentityUserClaim<string>>();
+            modelBuilder.Ignore<IdentityRoleClaim<string>>();
+            modelBuilder.Ignore<IdentityUserToken<string>>();
 
-            //GenerateRoleData(modelBuilder);
+            GenerateRoleData(modelBuilder);
         }
 
         private static void GenerateRoleData(ModelBuilder modelBuilder)
@@ -62,27 +62,24 @@ namespace BeautySalon.InfraStructure.Contexts
             modelBuilder.Entity<ApplicationRole>().HasData(
                 new ApplicationRole
                 {
-                    //Id = RoleSeedData.UserId,
-                    Id = Guid.NewGuid(),
+                    Id = Guid.Parse(RoleSeedData.UserId),
                     Name = RoleSeedData.UserName,
                     NormalizedName = RoleSeedData.UserNormalizedName,
-                    //ConcurrencyStamp = RoleSeedData.UserConcurrencyStamp
+                    ConcurrencyStamp = RoleSeedData.UserConcurrencyStamp
                 },
                  new ApplicationRole
                  {
-                     //Id = RoleSeedData.TeacherId,
-                     Id = Guid.NewGuid(),
+                     Id = Guid.Parse(RoleSeedData.OperatorId),
                      Name = RoleSeedData.OperatorName,
                      NormalizedName = RoleSeedData.OperatorNormalizedName,
-                     //ConcurrencyStamp = RoleSeedData.TeacherConcurrencyStamp
+                     ConcurrencyStamp = RoleSeedData.OperatorConcurrencyStamp
                  },
                 new ApplicationRole
                 {
-                    Id = Guid.NewGuid(),
-                    //Id = RoleSeedData.AdminId,
+                    Id = Guid.Parse(RoleSeedData.AdminId),
                     Name = RoleSeedData.AdminName,
                     NormalizedName = RoleSeedData.AdminNormalizedName,
-                    //ConcurrencyStamp = RoleSeedData.AdminConcurrencyStamp
+                    ConcurrencyStamp = RoleSeedData.AdminConcurrencyStamp
                 });
         }
     }

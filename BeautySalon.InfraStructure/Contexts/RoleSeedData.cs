@@ -6,19 +6,19 @@
         // بهتره اسم کاربر عادیم یوزر باشه یا مشتری؟
         // Customer OR User? 
 
-        //public const string UserId = "57305938-b658-42f2-81d5-69026a2b9506";
+        public const string UserId = "9A039FB2-86D2-401D-BDF4-7C5D325C38B4";
         public const string UserName = "User";
         public const string UserNormalizedName = "USER";
-        //public const string UserConcurrencyStamp = "b334deb3-87de-4666-80a6-59d7ebbe2175";
+        public const string UserConcurrencyStamp = "42b079e1-f854-4516-9e19-3976f995791d";
 
-        //public const string AdminId = "2b5fba5c-38c4-41a3-9bb1-77345a7f64c1";
+        public const string AdminId = "5209521B-738A-44DB-9771-FBB29D1A321A";
         public const string AdminName = "Admin";
         public const string AdminNormalizedName = "ADMIN";
-        //public const string AdminConcurrencyStamp = "b7e22a23-db0c-490d-86ca-6b33cb3c7a96";
+        public const string AdminConcurrencyStamp = "4298b909-6511-4ca7-977a-c6d4629d854e";
 
-        //public const string TeacherId = "d0221a25-ca77-4589-995d-be8e3f425495";
+        public const string OperatorId = "4AE3EEDA-C45F-4307-B749-50276BFC37E1";
         public const string OperatorName = "Operator";
         public const string OperatorNormalizedName = "OPERATOR";
-        //public const string TeacherConcurrencyStamp = "4433f9ed-dd73-4f6f-a230-e809825d8f2f";
+        public const string OperatorConcurrencyStamp = "66630827-3a85-49bc-bb07-1d49f8cd5381";
     }
 }

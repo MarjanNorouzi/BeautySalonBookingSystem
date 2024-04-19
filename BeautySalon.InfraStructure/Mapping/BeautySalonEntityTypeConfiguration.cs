@@ -27,7 +27,7 @@ namespace BeautySalon.InfraStructure.Mapping
     // آیا به کانفیگوریشن های مانند زیر که اطلاعات زیاد در خود ندارند، احتیاجی است؟
     public class CustomerEntityConfiguration : BeautySalonEntityTypeConfiguration<Customer, int>
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
+        public new void Configure(EntityTypeBuilder<Customer> builder)
         {
             base.Configure(builder);
         }
@@ -35,7 +35,7 @@ namespace BeautySalon.InfraStructure.Mapping
 
     public class OperatorEntityConfiguration : BeautySalonEntityTypeConfiguration<Operator, int>
     {
-        public void Configure(EntityTypeBuilder<Operator> builder)
+        public new void Configure(EntityTypeBuilder<Operator> builder)
         {
             base.Configure(builder);
         }
@@ -47,7 +47,7 @@ namespace BeautySalon.InfraStructure.Mapping
         // بررسی شود که با توجه به وجود داشتن این متد در کلاس والد، آیا بهتر است مدیفایر دیگری مانند
         // new, override, ..
         // استفاده شود یا خیر
-        public void Configure(EntityTypeBuilder<MainService> builder)
+        public new void Configure(EntityTypeBuilder<MainService> builder)
         {
             base.Configure(builder);
 
@@ -69,20 +69,22 @@ namespace BeautySalon.InfraStructure.Mapping
 
     public class SubserviceEntityConfiguration : BeautySalonEntityTypeConfiguration<Subservice, int>
     {
-        public void Configure(EntityTypeBuilder<Subservice> builder)
+        public new void Configure(EntityTypeBuilder<Subservice> builder)
         {
             builder.Property(x => x.Name)
                 .HasColumnType(nameof(SqlDbType.NVarChar))
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.Property(x => x.Description)
+            builder.Property(x => x.Description)                
                 .HasColumnType<string>(nameof(SqlDbType.NVarChar))
                 .HasMaxLength(512)
                 .IsRequired(false);
 
             builder.Property(x => x.Price)
                 .HasColumnType(nameof(SqlDbType.Decimal))
+                .HasPrecision(18, 4)
+                .HasDefaultValue(Decimal.Zero)
                 .HasDefaultValue(0)
                 .IsRequired();
 
@@ -96,7 +98,7 @@ namespace BeautySalon.InfraStructure.Mapping
 
     public class AppointmentEntityConfiguration : BeautySalonEntityTypeConfiguration<Appointment, int>
     {
-        public void Configure(EntityTypeBuilder<Appointment> builder)
+        public new void Configure(EntityTypeBuilder<Appointment> builder)
         {
             builder.Property(x => x.ReservationDateTime)
             .HasColumnType(nameof(SqlDbType.DateTime))
