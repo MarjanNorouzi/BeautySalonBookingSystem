@@ -1,5 +1,5 @@
-﻿using BeautySalon.InfraStructure.Contexts;
-using BeautySalon.Models.IdentityModels;
+﻿using BeautySalon.Domain.Entities.IdentityModels;
+using BeautySalon.InfraStructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

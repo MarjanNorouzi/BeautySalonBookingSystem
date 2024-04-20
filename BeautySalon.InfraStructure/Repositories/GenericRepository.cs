@@ -1,6 +1,6 @@
-﻿using BeautySalon.InfraStructure.Primitives.PrimitiveResults;
-using BeautySalon.Models.Primitives.PrimitiveMaybies;
-using BeautySalon.Models.Primitives.PrimitiveResults;
+﻿using BeautySalon.Domain.Primitives.PrimitiveMaybies;
+using BeautySalon.Domain.Primitives.PrimitiveResults;
+using BeautySalon.InfraStructure.Primitives.PrimitiveResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 

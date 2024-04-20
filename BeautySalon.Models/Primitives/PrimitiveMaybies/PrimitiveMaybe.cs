@@ -1,4 +1,4 @@
-﻿namespace BeautySalon.Models.Primitives.PrimitiveMaybies;
+﻿namespace BeautySalon.Domain.Primitives.PrimitiveMaybies;
 
 public readonly record struct PrimitiveMaybe
 {

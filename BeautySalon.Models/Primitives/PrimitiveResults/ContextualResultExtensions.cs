@@ -1,4 +1,4 @@
-﻿namespace BeautySalon.Models.Primitives.PrimitiveResults;
+﻿namespace BeautySalon.Domain.Primitives.PrimitiveResults;
 public static partial class ContextualResultExtensions
 {
     public static ValueTask<ContextualResult<TContext>> Execute<TContext>(this ContextualResult<TContext> src, Func<TContext, TContext> func) => ContextualResult<TContext>.Execute(src, func);

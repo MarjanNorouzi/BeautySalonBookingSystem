@@ -19,7 +19,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+    <ProjectReference Include="..\BeautySalon.Application\BeautySalon.Application.csproj" />
     <ProjectReference Include="..\BeautySalon.InfraStructure\BeautySalon.InfraStructure.csproj" />
+    <ProjectReference Include="..\BeautySalon.Models\BeautySalon.Domain.csproj" />
   </ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

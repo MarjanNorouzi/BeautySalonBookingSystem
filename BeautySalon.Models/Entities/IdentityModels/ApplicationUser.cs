@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace BeautySalon.Models.IdentityModels
+namespace BeautySalon.Domain.Entities.IdentityModels
 {
     public class ApplicationUser : IdentityUser<Guid>
     {

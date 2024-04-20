@@ -1,7 +1,7 @@
-﻿using BeautySalon.Models.IdentityModels;
+﻿using BeautySalon.Domain.Entities.IdentityModels;
 using System.ComponentModel.DataAnnotations;
 
-namespace BeautySalon.Models
+namespace BeautySalon.Domain.Entities
 {
     public abstract record BaseEntity<TKey> where TKey : new()
     {

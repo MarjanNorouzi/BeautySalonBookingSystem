@@ -1,4 +1,4 @@
-﻿using BeautySalon.Models.Primitives.PrimitiveResults;
+﻿using BeautySalon.Domain.Primitives.PrimitiveResults;
 
 namespace BeautySalon.InfraStructure.Primitives.PrimitiveResults;
 

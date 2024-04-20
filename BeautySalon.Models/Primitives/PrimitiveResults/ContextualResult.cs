@@ -1,6 +1,6 @@
 ﻿using BeautySalon.InfraStructure.Primitives.PrimitiveResults;
 
-namespace BeautySalon.Models.Primitives.PrimitiveResults;
+namespace BeautySalon.Domain.Primitives.PrimitiveResults;
 
 public readonly partial record struct ContextualResult<TContext>
 {

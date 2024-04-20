@@ -1,7 +1,7 @@
-﻿using BeautySalon.InfraStructure.ConnectionStrings;
+﻿using BeautySalon.Domain.Entities;
+using BeautySalon.Domain.Entities.IdentityModels;
+using BeautySalon.InfraStructure.ConnectionStrings;
 using BeautySalon.InfraStructure.Mapping;
-using BeautySalon.Models;
-using BeautySalon.Models.IdentityModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
