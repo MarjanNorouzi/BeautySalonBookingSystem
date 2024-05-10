@@ -3,29 +3,69 @@ using BeautySalon.Domain.Entities;
 using BeautySalon.Domain.Primitives.PrimitiveResults;
 using BeautySalon.InfraStructure.Contexts;
 using BeautySalon.InfraStructure.Primitives.PrimitiveResults;
-using Microsoft.EntityFrameworkCore;
 
 namespace BeautySalon.InfraStructure.Repositories;
 
-public sealed class ServicesRepository(BeautySalonContext context) : GenericRepository<BeautySalonContext>(context), IServicesRepository
+// موقع متد باید تصمیم بگیریم که انتیتی چیه
+// چون مثل این سرویس گاهی نیاز داریم دو تا انتیتی تو یه سرویس استفاده کنیم
+public sealed class ServicesRepository(BeautySalonContext context) : /*GenericRepository<BeautySalonContext>(context),*/ IServicesRepository
 {
-    public ValueTask<PrimitiveResult<MainService>> AddMainService(MainService entity, CancellationToken cancellationToken) => AddEntity(entity);
+    //public ValueTask<PrimitiveResult<MainService>> AddMainService(MainService entity, CancellationToken cancellationToken) => AddEntity(entity);
 
-    public ValueTask<PrimitiveResult<Subservice>> AddSubService(Subservice entity, CancellationToken cancellationToken) => AddEntity(entity);
+    //public ValueTask<PrimitiveResult<Subservice>> AddSubService(Subservice entity, CancellationToken cancellationToken) => AddEntity(entity);
 
-    public ValueTask<PrimitiveResult<MainService>> DeleteMainService(MainService entity, CancellationToken cancellationToken) => DeleteEntity(entity);
+    //public ValueTask<PrimitiveResult<MainService>> DeleteMainService(MainService entity, CancellationToken cancellationToken) => DeleteEntity(entity);
 
-    public ValueTask<PrimitiveResult<Subservice>> DeleteSubservice(Subservice entity, CancellationToken cancellationToken) => DeleteEntity(entity);
+    //public ValueTask<PrimitiveResult<Subservice>> DeleteSubservice(Subservice entity, CancellationToken cancellationToken) => DeleteEntity(entity);
 
-    public async ValueTask<PrimitiveResult<MainService[]>> GetMainServices(CancellationToken cancellationToken) =>
-     await this._context.MainService.Run(m => m.ToArrayAsync(cancellationToken)).ConfigureAwait(false);
+    //public async ValueTask<PrimitiveResult<MainService[]>> GetMainServices(CancellationToken cancellationToken) =>
+    // await this._context.MainService.Run(m => m.ToArrayAsync(cancellationToken)).ConfigureAwait(false);
 
-    public async ValueTask<PrimitiveResult<Subservice[]>> GetSubServices(int mainServiceId, CancellationToken cancellationToken) =>
-         await this._context.Subservice.Run(m => m.ToArrayAsync(cancellationToken)).ConfigureAwait(false);
+    //public async ValueTask<PrimitiveResult<Subservice[]>> GetSubServices(int mainServiceId, CancellationToken cancellationToken) =>
+    //     await this._context.Subservice.Run(m => m.ToArrayAsync(cancellationToken)).ConfigureAwait(false);
 
-    public ValueTask<PrimitiveResult<MainService>> UpdateMainService(MainService entity, CancellationToken cancellationToken) => UpdateEntity(entity);
+    //public ValueTask<PrimitiveResult<MainService>> UpdateMainService(MainService entity, CancellationToken cancellationToken) => UpdateEntity(entity);
 
-    public ValueTask<PrimitiveResult<Subservice>> UpdateSubservice(Subservice entity, CancellationToken cancellationToken) => UpdateEntity(entity);
+    //public ValueTask<PrimitiveResult<Subservice>> UpdateSubservice(Subservice entity, CancellationToken cancellationToken) => UpdateEntity(entity);
+    public ValueTask<PrimitiveResult<MainService>> AddMainService(MainService entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<Subservice>> AddSubService(Subservice entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<MainService>> DeleteMainService(MainService entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<Subservice>> DeleteSubservice(Subservice entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<MainService[]>> GetMainServices(CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<Subservice[]>> GetSubServices(int mainServiceId, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<MainService>> UpdateMainService(MainService entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<PrimitiveResult<Subservice>> UpdateSubservice(Subservice entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public static class PrimitiveResultIQueryableExtensions

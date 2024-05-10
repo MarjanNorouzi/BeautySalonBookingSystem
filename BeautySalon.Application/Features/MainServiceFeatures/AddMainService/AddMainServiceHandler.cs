@@ -15,6 +15,14 @@ internal sealed class AddMainServiceHandler : IRequestHandler<AddMainServiceRequ
 
     public Task<PrimitiveResult<MainService>> Handle(AddMainServiceRequest request, CancellationToken cancellationToken)
     {
+        //_servicesRepository.AddMainService(new MainService() 
+        //{
+        //    Name = request.Name,
+        //    CreatedDate = DateTime.UtcNow,
+        //    Description = request.Description,
+        //    UpdatedDate = DateTime.UtcNow
+        //});
+
         throw new NotImplementedException();
     }
 }

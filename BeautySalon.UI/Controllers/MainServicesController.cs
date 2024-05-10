@@ -34,12 +34,12 @@ public class MainServicesController : ControllerBase
              .ConfigureAwait(false);
     }
 
-    [HttpDelete("Add")]
-    public async Task<IActionResult> Add([FromQuery] AddMainServiceRequest request, CancellationToken cancellationToken)
-    {
-        return await this._mediator.Send(request, cancellationToken)
-            .Match(this.Ok,
-                    onFailure => Problem(string.Join(',', onFailure.Select(x => x.Message))))
-             .ConfigureAwait(false);
-    }
+    //[HttpDelete("Delete")]
+    //public async Task<IActionResult> Delete([FromQuery] AddMainServiceRequest request, CancellationToken cancellationToken)
+    //{
+    //    return await this._mediator.Send(request, cancellationToken)
+    //        .Match(this.Ok,
+    //                onFailure => Problem(string.Join(',', onFailure.Select(x => x.Message))))
+    //         .ConfigureAwait(false);
+    //}
 }
