@@ -1,10 +1,11 @@
 ﻿using BeautySalon.Domain.Entities;
 using BeautySalon.Domain.Entities.IdentityModels;
 using BeautySalon.InfraStructure.ConnectionStrings;
-using BeautySalon.InfraStructure.Mapping;
+using BeautySalon.InfraStructure.DataInitializer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using BeautySalon.InfraStructure.EntityTypeConfigurations;
 
 namespace BeautySalon.InfraStructure.Contexts
 {
@@ -30,8 +31,6 @@ namespace BeautySalon.InfraStructure.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new CustomerEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new OperatorEntityConfiguration());
             modelBuilder.ApplyConfiguration(new MainServiceEntityConfiguration());
             modelBuilder.ApplyConfiguration(new SubserviceEntityConfiguration());
             modelBuilder.ApplyConfiguration(new AppointmentEntityConfiguration());
@@ -62,24 +61,24 @@ namespace BeautySalon.InfraStructure.Contexts
             modelBuilder.Entity<ApplicationRole>().HasData(
                 new ApplicationRole
                 {
-                    Id = Guid.Parse(RoleSeedData.UserId),
-                    Name = RoleSeedData.UserName,
-                    NormalizedName = RoleSeedData.UserNormalizedName,
-                    ConcurrencyStamp = RoleSeedData.UserConcurrencyStamp
+                    Id = Guid.Parse(RoleDataInitializer.UserId),
+                    Name = RoleDataInitializer.UserName,
+                    NormalizedName = RoleDataInitializer.UserNormalizedName,
+                    ConcurrencyStamp = RoleDataInitializer.UserConcurrencyStamp
                 },
                  new ApplicationRole
                  {
-                     Id = Guid.Parse(RoleSeedData.OperatorId),
-                     Name = RoleSeedData.OperatorName,
-                     NormalizedName = RoleSeedData.OperatorNormalizedName,
-                     ConcurrencyStamp = RoleSeedData.OperatorConcurrencyStamp
+                     Id = Guid.Parse(RoleDataInitializer.OperatorId),
+                     Name = RoleDataInitializer.OperatorName,
+                     NormalizedName = RoleDataInitializer.OperatorNormalizedName,
+                     ConcurrencyStamp = RoleDataInitializer.OperatorConcurrencyStamp
                  },
                 new ApplicationRole
                 {
-                    Id = Guid.Parse(RoleSeedData.AdminId),
-                    Name = RoleSeedData.AdminName,
-                    NormalizedName = RoleSeedData.AdminNormalizedName,
-                    ConcurrencyStamp = RoleSeedData.AdminConcurrencyStamp
+                    Id = Guid.Parse(RoleDataInitializer.AdminId),
+                    Name = RoleDataInitializer.AdminName,
+                    NormalizedName = RoleDataInitializer.AdminNormalizedName,
+                    ConcurrencyStamp = RoleDataInitializer.AdminConcurrencyStamp
                 });
         }
     }

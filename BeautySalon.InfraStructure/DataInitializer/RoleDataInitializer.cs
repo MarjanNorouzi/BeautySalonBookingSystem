@@ -1,6 +1,6 @@
-﻿namespace BeautySalon.InfraStructure.Contexts
+﻿namespace BeautySalon.InfraStructure.DataInitializer
 {
-    public class RoleSeedData
+    public class RoleDataInitializer
     {
         // TODO
         // بهتره اسم کاربر عادیم یوزر باشه یا مشتری؟

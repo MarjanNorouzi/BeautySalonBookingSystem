@@ -12,10 +12,10 @@ public static class ApplicationInstaller
     {
         return services
             .InstallApplication()
-            .InstallPersistance();
+            .InstallPersistence();
     }
 
-    public static IServiceCollection InstallPersistance(this IServiceCollection services)
+    public static IServiceCollection InstallPersistence(this IServiceCollection services)
     {
         services.AddDbContext<BeautySalonContext>(options =>
             options.UseSqlServer(ConnectionString.BeautySalonConnectionString)

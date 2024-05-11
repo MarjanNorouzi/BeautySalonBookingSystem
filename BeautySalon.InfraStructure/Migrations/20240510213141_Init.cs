@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BeautySalon.InfraStructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMigration : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -311,9 +311,9 @@ namespace BeautySalon.InfraStructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("4ae3eeda-c45f-4307-b749-50276bfc37e1"), null, "Operator", "OPERATOR" },
-                    { new Guid("5209521b-738a-44db-9771-fbb29d1a321a"), null, "Admin", "ADMIN" },
-                    { new Guid("9a039fb2-86d2-401d-bdf4-7c5d325c38b4"), null, "User", "USER" }
+                    { new Guid("4ae3eeda-c45f-4307-b749-50276bfc37e1"), "66630827-3a85-49bc-bb07-1d49f8cd5381", "Operator", "OPERATOR" },
+                    { new Guid("5209521b-738a-44db-9771-fbb29d1a321a"), "4298b909-6511-4ca7-977a-c6d4629d854e", "Admin", "ADMIN" },
+                    { new Guid("9a039fb2-86d2-401d-bdf4-7c5d325c38b4"), "42b079e1-f854-4516-9e19-3976f995791d", "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,5 +1,7 @@
-﻿using BeautySalon.Domain.Entities.IdentityModels;
+﻿using BeautySalon.Application.IRepositories;
+using BeautySalon.Domain.Entities.IdentityModels;
 using BeautySalon.InfraStructure.Contexts;
+using BeautySalon.InfraStructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,9 @@ builder.Services.AddDbContext<BeautySalonContext>(x => x.UseSqlServer(builder.Co
 builder.Services
     .AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<BeautySalonContext>();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IMainServiceRepository, MainServiceRepository>();
 
 //builder.Services.AddDbContext<BeautySalonContext>();
 //builder.Services.AddScoped<BeautySalonContext>(sp => sp.GetRequiredService<BeautySalonContext>());

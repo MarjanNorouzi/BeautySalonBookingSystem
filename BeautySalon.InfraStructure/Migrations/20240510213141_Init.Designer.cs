@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautySalon.InfraStructure.Migrations
 {
     [DbContext(typeof(BeautySalonContext))]
-    [Migration("20240419192610_InitMigration")]
-    partial class InitMigration
+    [Migration("20240510213141_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace BeautySalon.InfraStructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BeautySalon.Models.Appointment", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Appointment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("Appointment");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Customer", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationRole", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,24 +119,27 @@ namespace BeautySalon.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("9a039fb2-86d2-401d-bdf4-7c5d325c38b4"),
+                            ConcurrencyStamp = "42b079e1-f854-4516-9e19-3976f995791d",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = new Guid("4ae3eeda-c45f-4307-b749-50276bfc37e1"),
+                            ConcurrencyStamp = "66630827-3a85-49bc-bb07-1d49f8cd5381",
                             Name = "Operator",
                             NormalizedName = "OPERATOR"
                         },
                         new
                         {
                             Id = new Guid("5209521b-738a-44db-9771-fbb29d1a321a"),
+                            ConcurrencyStamp = "4298b909-6511-4ca7-977a-c6d4629d854e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationUser", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -214,7 +217,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationUserRole", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationUserRole", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -229,7 +232,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.MainService", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.MainService", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -264,7 +267,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("MainService");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Operator", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Operator", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -293,7 +296,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("Operator");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Subservice", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Subservice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -339,7 +342,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("Subservice");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.SubserviceOperator", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.SubserviceOperator", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -464,9 +467,9 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Appointment", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Appointment", b =>
                 {
-                    b.HasOne("BeautySalon.Models.Customer", "Customer")
+                    b.HasOne("BeautySalon.Domain.Entities.Customer", "Customer")
                         .WithMany("Appointments")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -475,17 +478,17 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationUser", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", b =>
                 {
-                    b.HasOne("BeautySalon.Models.Customer", "Customer")
+                    b.HasOne("BeautySalon.Domain.Entities.Customer", "Customer")
                         .WithOne("ApplicationUser")
-                        .HasForeignKey("BeautySalon.Models.IdentityModels.ApplicationUser", "CustomerId")
+                        .HasForeignKey("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", "CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BeautySalon.Models.Operator", "Operator")
+                    b.HasOne("BeautySalon.Domain.Entities.Operator", "Operator")
                         .WithOne("ApplicationUser")
-                        .HasForeignKey("BeautySalon.Models.IdentityModels.ApplicationUser", "OperatorId")
+                        .HasForeignKey("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", "OperatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -494,15 +497,15 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.Navigation("Operator");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationUserRole", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationUserRole", b =>
                 {
-                    b.HasOne("BeautySalon.Models.IdentityModels.ApplicationRole", "Role")
+                    b.HasOne("BeautySalon.Domain.Entities.IdentityModels.ApplicationRole", "Role")
                         .WithMany("ApplicationUserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BeautySalon.Models.IdentityModels.ApplicationUser", "User")
+                    b.HasOne("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", "User")
                         .WithMany("ApplicationUserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -513,9 +516,9 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Subservice", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Subservice", b =>
                 {
-                    b.HasOne("BeautySalon.Models.MainService", "MainService")
+                    b.HasOne("BeautySalon.Domain.Entities.MainService", "MainService")
                         .WithMany("Subservices")
                         .HasForeignKey("MainServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -524,21 +527,21 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.Navigation("MainService");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.SubserviceOperator", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.SubserviceOperator", b =>
                 {
-                    b.HasOne("BeautySalon.Models.Appointment", "Appointment")
+                    b.HasOne("BeautySalon.Domain.Entities.Appointment", "Appointment")
                         .WithMany("SubserviceOperators")
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BeautySalon.Models.Operator", "Operator")
+                    b.HasOne("BeautySalon.Domain.Entities.Operator", "Operator")
                         .WithMany("SubserviceOperators")
                         .HasForeignKey("OperatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BeautySalon.Models.Subservice", "Subservice")
+                    b.HasOne("BeautySalon.Domain.Entities.Subservice", "Subservice")
                         .WithMany("SubserviceOperators")
                         .HasForeignKey("SubserviceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -553,7 +556,7 @@ namespace BeautySalon.InfraStructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("BeautySalon.Models.IdentityModels.ApplicationRole", null)
+                    b.HasOne("BeautySalon.Domain.Entities.IdentityModels.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -562,7 +565,7 @@ namespace BeautySalon.InfraStructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("BeautySalon.Models.IdentityModels.ApplicationUser", null)
+                    b.HasOne("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -571,7 +574,7 @@ namespace BeautySalon.InfraStructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("BeautySalon.Models.IdentityModels.ApplicationUser", null)
+                    b.HasOne("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -580,19 +583,19 @@ namespace BeautySalon.InfraStructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("BeautySalon.Models.IdentityModels.ApplicationUser", null)
+                    b.HasOne("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Appointment", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Appointment", b =>
                 {
                     b.Navigation("SubserviceOperators");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Customer", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("ApplicationUser")
                         .IsRequired();
@@ -600,22 +603,22 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.Navigation("Appointments");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationRole", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationRole", b =>
                 {
                     b.Navigation("ApplicationUserRoles");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.IdentityModels.ApplicationUser", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.IdentityModels.ApplicationUser", b =>
                 {
                     b.Navigation("ApplicationUserRoles");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.MainService", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.MainService", b =>
                 {
                     b.Navigation("Subservices");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Operator", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Operator", b =>
                 {
                     b.Navigation("ApplicationUser")
                         .IsRequired();
@@ -623,7 +626,7 @@ namespace BeautySalon.InfraStructure.Migrations
                     b.Navigation("SubserviceOperators");
                 });
 
-            modelBuilder.Entity("BeautySalon.Models.Subservice", b =>
+            modelBuilder.Entity("BeautySalon.Domain.Entities.Subservice", b =>
                 {
                     b.Navigation("SubserviceOperators");
                 });

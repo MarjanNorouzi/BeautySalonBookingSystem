@@ -2,6 +2,6 @@
 {
     public record ConnectionString
     {
-        public const string BeautySalonConnectionString = "data source=.; initial catalog=BeautySalon; TrustServerCertificate=true;MultipleActiveResultSets=true; integrated security=true;";
+        public const string BeautySalonConnectionString = "data source=LAPTOP-VIV37RCJ; initial catalog=BeautySalon; integrated security=true;trust server certificate=true;";
     }
 }
